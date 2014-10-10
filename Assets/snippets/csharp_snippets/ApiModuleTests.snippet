@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>ApiModuleTests</Title>
+      <Author>StachuKorick@gmail.com</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[private Browser sut;
+
+public ApiModuleTests()
+{
+    ApiModule.People.Clear();
+    sut = new Browser(new DefaultNancyBootstrapper());
+}
+
+[Fact]
+public void should_return_empty_list_before_inserts()
+{
+    var actual = sut.Get("/api/");
+
+    Assert.Equal(HttpStatusCode.OK, actual.StatusCode);
+    Assert.Empty(actual.Body.DeserializeJson<Person[]>());
+}
+
+[Fact]
+public void should_return_201_create_on_person_post()
+{
+    var person = new Person { Name = "Stachu", Mass = 1 };
+    var actual = sut.Post("/api/", with => with.JsonBody(person));
+
+    Assert.Equal(HttpStatusCode.Created, actual.StatusCode);
+}
+
+[Fact]
+public void post_actually_posts()
+{
+    var person=  new Person { Name = "Stachu", Mass = 1 };
+    var actual = sut.Post("/api/", with => with.JsonBody(person))
+        .Then.Get("/api/");
+
+    var actualBody = actual.Body.DeserializeJson<Person[]>();
+            
+    Assert.Equal(1, actualBody.Length);
+    Assert.Equal(person.Name, actualBody[0].Name);
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

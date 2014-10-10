@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>ravendb_homemodule</Title>
+      <Author>StachuKorick@gmail.com</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[docStore = new DocumentStore { Url = "http://localhost:8081//" };
+    docStore.Initialize();
+
+    Get["/"] = _ =>
+    {
+      var session = docStore.OpenSession();
+
+      return Response.AsJson(session.Query<Person>().ToList());
+    };
+
+    Post["/"] = _ =>
+    {
+      var newPerson = this.Bind<Person>();
+      var session = docStore.OpenSession();
+      
+      session.Store(newPerson);
+      session.SaveChanges();
+
+      return Response.AsText(entity.Id.ToString())
+        .WithStatusCode(HttpStatusCode.Created);
+    };]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

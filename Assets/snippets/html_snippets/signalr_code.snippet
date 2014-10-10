@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>signalr_code</Title>
+      <Author>StachuKorick@gmail.com</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="html"><![CDATA[<script>
+    $.connection.hub.start();
+
+    var hub = $.connection.myHub;
+
+    hub.client.clientFunc = function (messageFromServer) {
+        alert(messageFromServer);
+    };
+
+    var contactServer = function(messageToServer) {
+        hub.server.serverFunc(messageToServer);
+    }
+
+    $('#btn').click(function () {
+        contactServer($('#text').val());
+    });
+</script>]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
