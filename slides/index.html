@@ -17,17 +17,24 @@
 		</section>
 
 		<section>
-			<h1>
+			<h3>
 				Who am I?
-			</h1>
-			<p>
-				asdf	
-			</p>
+			</h3>
+			<ul class="incremental">
+				<li>Not an Microsoft MVP</li>
+				<li>Haven't written any books</li>
+				<li>Don't contribute to any OSS projects you care about</li>
+				<li>
+					Software Dev at AcademyOne
+					(check them out)
+				</li>
+			</ul>
 		</section>
 
 		<section>
-			<h3>Basic History</h3>
+			<h3>Basic History of NancyFx</h3>
 			<ul class="incremental">
+				<li>Open-Source</li>
 				<li>Based off of Ruby's Sinatra</li>
 				<li>Lightweight and low-ceremony</li>
 				<li>Works on .NET and Mono</li>
@@ -42,8 +49,10 @@
 			<h3>
 				How the internet works
 				<small>(in a nutshell)</small>
+
+				<br><small>(a.k.a. - responsibilities of a web framework</small>
 			</h3>
-			<ul class="incremental">
+			<ul>
 				<li>Client sends request</li>
 				<li>Server picks up on request</li>
 				<li>Server handles request, and prepares its response</li>
@@ -97,6 +106,13 @@ public class ResourceModule : NancyModule
 		</section>
 
 		<section>
+			<h3>Mini-Review</h3>
+			<ul>
+				<li>In Nancy, Modules routes' are the endpoints of the application.</li>
+			</ul>
+		</section>
+
+<!-- 		<section>
 			<blockquote>
 				asdf
 			</blockquote>
@@ -108,20 +124,21 @@ public class ResourceModule : NancyModule
 				</p>
 		  </details>
 		</section>
-
+ -->
 		<section>
 			<h3>Why use NancyFx?</h3>
 			<ul>
+				<li>Terse syntax; less ceremony</li>
+				<li>Better extension points</li>
 				<li>Easier testing</li>
 				<li>Automatic dependency-injection</li>
-				<li>Better extension points</li>
 				<li>Completely customizable</li>
-				<li>Terse syntax; less ceremony</li>
 				<li>Runs anywhere (even in an .exe!)</li>
 				<li>No web.config nonsense</li>
 				<li>Support and community</li>
 			</ul>
 		</section>
+
 <!-- More on Routing -->
 
 		<section>
@@ -129,14 +146,23 @@ public class ResourceModule : NancyModule
 		</section>
 
 		<section>
-			insert picture here			
+			<h3>
+				All routes follow the same pattern:<br>
+				METHOD+PATTERN+ACTION+(CONDITION)
+			</h3>
+			<img src="http://i.imgur.com/lKS8zji.png?1" alt="">
 		</section>
 
 		<section>
-			<h3>Method</h3>
+			<h3>Methods available</h3>
 			<ul>
 				<li>GET</li>
 				<li>POST</li>
+				<li>PATCH</li>
+				<li>PUT</li>
+				<li>DELETE</li>
+				<li>OPTIONS</li>
+				<li>HEAD</li>
 			</ul>
 		</section>
 
@@ -168,12 +194,10 @@ public class ResourceModule : NancyModule
 		<section>
 			<h3>Actions</h3>
 
-			<p>Func&lt;dynamic, dynamic&gt;</p>
-
-			<p>
-				will determine response type automatically, 
-				or you can use the Response object to manually negotiate content
-			</p>
+			Func&lt;dynamic, dynamic&gt;
+			<br><br>
+			Will determine response type automatically, 
+			or you can use the Response object to manually negotiate content
 		</section>
 		
 		<section>
@@ -181,6 +205,7 @@ public class ResourceModule : NancyModule
 
 			insert example
 		</section>
+
 <!-- Model-Binding -->
 
 		<section>
@@ -188,12 +213,8 @@ public class ResourceModule : NancyModule
 		</section>
 
 		<section>
-			<!-- <figure>
-			  <img src="http://placekitten.com/g/800/600">
-			  <figcaption>An image</figcaption>
-			</figure> -->
-			insert picture here
-			<div role="note">Kittens are so cute!</div>
+			<h3>Reminder Example</h3>
+			[insert from Dragon API]
 		</section>
 
 		<section>
@@ -223,7 +244,7 @@ public class ResourceModule : NancyModule
 				Nancy will look at your HTTP Content-Type header.
 
 				<br>
-				i.e. - application/json will result in being interpreted
+				i.e. - application/json will result in being interpreted as JSON
 			</p>
 		</section>
 
@@ -237,9 +258,12 @@ public class ResourceModule : NancyModule
 		<section>
 			<h3>What is the Bootstrapper?</h3>
 
-			<p>
-				The bootstrapper is Nancy's way of letting you change the runtime behaviour of NancyFx.
-			</p>
+			<ul>
+				<li>
+					The bootstrapper is Nancy's way of letting you change the runtime behaviour of NancyFx
+				</li>
+				<li>Basically a global.asax and web.config combo that isn't as bad as either</li>
+			</ul>
 		</section>
 
 		<section>
@@ -249,7 +273,7 @@ public class ResourceModule : NancyModule
 		</section>
 		
 		<section>
-			<h3>What if my Bootstrap's too long?</h3>
+			<h3>What if my Bootstraper's too long?</h3>
 
 			<p>Create some classes inheriting from IStartup.</p>
 		</section>
