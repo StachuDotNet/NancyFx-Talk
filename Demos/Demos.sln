@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{C3447280-1A35-4BD4-9DD4-D94DD43EF069}"
 EndProject
@@ -53,7 +53,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.Web", "Testing.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.Tests", "Testing.Tests\Testing.Tests.csproj", "{190A80CB-44B5-48C8-8125-EE7E06D6FB85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Live", "Live\Live.csproj", "{F3D40AD6-174F-4B27-A192-C3303CBC346B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingWorking", "CachingWorking\CachingWorking.csproj", "{91E3F62D-7CA4-407E-8B9E-99FECAA4335C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,10 +109,10 @@ Global
 		{190A80CB-44B5-48C8-8125-EE7E06D6FB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{190A80CB-44B5-48C8-8125-EE7E06D6FB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{190A80CB-44B5-48C8-8125-EE7E06D6FB85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3D40AD6-174F-4B27-A192-C3303CBC346B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3D40AD6-174F-4B27-A192-C3303CBC346B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3D40AD6-174F-4B27-A192-C3303CBC346B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3D40AD6-174F-4B27-A192-C3303CBC346B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E3F62D-7CA4-407E-8B9E-99FECAA4335C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E3F62D-7CA4-407E-8B9E-99FECAA4335C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E3F62D-7CA4-407E-8B9E-99FECAA4335C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E3F62D-7CA4-407E-8B9E-99FECAA4335C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +138,6 @@ Global
 		{4896637F-0090-41AC-B7ED-0FC1A24F1C66} = {E5DE2811-430F-4C87-82CE-B6F85FE988AD}
 		{1FEE69D4-86E1-4544-8339-F5FB90A34C83} = {BD851633-150D-41C3-A7D5-9EBC39A8A03D}
 		{190A80CB-44B5-48C8-8125-EE7E06D6FB85} = {BD851633-150D-41C3-A7D5-9EBC39A8A03D}
-		{F3D40AD6-174F-4B27-A192-C3303CBC346B} = {9A3CDB86-2244-4F4E-979B-45ECDE7B7063}
+		{91E3F62D-7CA4-407E-8B9E-99FECAA4335C} = {23BED289-E6D7-4B70-A1A3-A4F940BD9EE6}
 	EndGlobalSection
 EndGlobal
