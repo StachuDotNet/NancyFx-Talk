@@ -17,7 +17,7 @@ namespace End.DragonAPI
                 new Dragon(){ BreathesFire = true, Id = 1, Mass = 12000}
             };
 
-            Get["/"] = _ => _dragonList;
+            Get["/"] = _ => Negotiate.WithModel(_dragonList);
 
             Get["/{id:int}"] = _ => GetDragon(_.id);
 

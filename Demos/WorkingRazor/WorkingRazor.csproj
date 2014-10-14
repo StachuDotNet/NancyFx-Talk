@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{61BF21DF-907A-4348-BC2A-7220787F8FAD}</ProjectGuid>
+    <ProjectGuid>{4591E15D-C022-47F7-A353-F7FA34C7AE36}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Razor</RootNamespace>
-    <AssemblyName>Razor</AssemblyName>
+    <RootNamespace>WorkingRazor</RootNamespace>
+    <AssemblyName>WorkingRazor</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -41,29 +41,30 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Nancy, Version=0.23.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.22.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.22.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.ViewEngines.Spark">
-      <HintPath>..\packages\Nancy.Viewengines.Spark.0.23.2\lib\net40\Nancy.ViewEngines.Spark.dll</HintPath>
+    <Reference Include="Nancy.Validation.DataAnnotations">
+      <HintPath>..\packages\Nancy.Validation.DataAnnotations.0.23.2\lib\net40\Nancy.Validation.DataAnnotations.dll</HintPath>
     </Reference>
-    <Reference Include="Spark">
-      <HintPath>..\packages\Spark.1.7.0.0\lib\NET40\Spark.dll</HintPath>
+    <Reference Include="Nancy.ViewEngines.Razor">
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.22.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor.Unofficial">
+      <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\CustomerError.spark" />
-    <None Include="Views\Customers.spark" />
+    <Content Include="icon.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -78,6 +79,8 @@
       <SubType>
       </SubType>
     </Content>
+    <None Include="Views\CustomerError.cshtml" />
+    <None Include="Views\Customers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -112,7 +115,10 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>
-    </PostBuildEvent>
+if $(ConfigurationName) == Debug (
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.22.0\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.22.0\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+)</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

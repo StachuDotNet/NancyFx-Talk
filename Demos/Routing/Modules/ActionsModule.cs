@@ -35,12 +35,14 @@ namespace Routing.Modules
             // Manual content negotiation.
             Get["/"] = _ =>
             {
+
+
                 return Negotiate
                     .WithModel(new { FirstName = "Nancy " })
                     .WithMediaRangeModel("text/html", new { FirstName = "Nancy fancy pants" })
                     .WithView("negotiatedview")
                     .WithHeader("X-Custom", "SomeValue");
-            };  
+            };
         }
     }
 }
