@@ -140,20 +140,6 @@ public class ResourceModule : NancyModule
 		        	<p>"Get me to the code!"</p>
 		    	</section>
     
-			    <section>
-			        <h2>Why use NancyFx?</h2>
-			        <ul>
-			            <li>Terse syntax; less ceremony</li>
-			            <li>Better extension points</li>
-			            <li>Easier testing</li>
-			            <li>Automatic dependency-injection</li>
-			            <li>Completely customizable</li>
-			            <li>Runs anywhere (even in an .exe!)</li>
-			            <li>No web.config nonsense</li>
-			            <li>Support and community</li>
-			        </ul>
-			    </section>
-    
     <section>
         <section>
             <h2>An Explanation of Routing</h2>
@@ -255,20 +241,20 @@ var f = this.BindTo(instance);
 <pre><code data-trim contenteditable>
 public class ApplicationStartup : IApplicationStartup
 {
-	public void Initialize(IPipelines pipelines)  {/*...*/)}
+    public void Initialize(IPipelines pipelines)  {/*...*/)}
 }</code></pre>
 
 <pre><code data-trim contenteditable>
 public class Registrations : IRegistrations
 {
-	public IEnumerable&lt;CollectionTypeRegistration&gt; 
-		CollectionTypeRegistrations { get { /*...*/ } }
+    public IEnumerable&lt;CollectionTypeRegistration&gt; 
+        CollectionTypeRegistrations { get { /*...*/ } }
 
-	public IEnumerable&lt;InstanceRegistration&gt; 
-		InstanceRegistrations { get { /*...*/ } }
+    public IEnumerable&lt;InstanceRegistration&gt; 
+        InstanceRegistrations { get { /*...*/ } }
 
-	public IEnumerable&lt;TypeRegistration&gt; 
-		TypeRegistrations { get { /*...*/ } }
+    public IEnumerable&lt;TypeRegistration&gt; 
+        TypeRegistrations { get { /*...*/ } }
 }</code></pre>
 
     </section>
@@ -375,6 +361,32 @@ return View["viewName", model];
 </section>
 
 <section>
+				    <section>
+				        <h2>Why use NancyFx?</h2>
+				        <ul>
+				            <li>Terse syntax; less ceremony</li>
+				            <li>Better extension points</li>
+				            <li>Easier testing</li>
+				            <li>Automatic dependency-injection</li>
+				            <li>Completely customizable</li>
+				            <li>Runs anywhere (even in an .exe!)</li>
+				            <li>No web.config nonsense</li>
+				            <li>Support and community</li>
+				        </ul>
+			        </section>
+			        <section>
+						<p>
+							Christian Horsdal, author of <q>Nancy Web Development</q>:
+						</p>
+						<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+							&ldquo;In this seemingly [...] rational realm of technology, we tend to focus a lot on the concrete and measurable things when we choose between one technology and the other... 
+
+							I think we often miss an important component in these directions, namely the style.&rdquo;
+						</blockquote>
+			        </section>
+			    </section>
+
+<section>
 <h1>Done!</h1>
 <p>Time for odds and ends!</p>
 </section>
@@ -444,32 +456,7 @@ Get["/"] = parameters => {
 
 						
 					</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-		
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
 			</div>
-
 		</div>
 
 		<script src="js/head.min.js"></script>
@@ -499,8 +486,6 @@ Get["/"] = parameters => {
 			});
 
 		</script>
-
-
 
 	</body>
 </html>
