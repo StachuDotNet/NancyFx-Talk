@@ -3,10 +3,6 @@ using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Forms
 {
@@ -14,8 +10,7 @@ namespace Forms
     {
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
-            // We don't call "base" here to prevent auto-discovery of
-            // types/dependencies
+            // We don't call "base" here to prevent auto-discovery of types/dependencies
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)

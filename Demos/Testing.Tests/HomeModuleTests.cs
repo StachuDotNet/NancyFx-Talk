@@ -1,17 +1,14 @@
 ﻿using Nancy;
 using Nancy.Testing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Testing.Tests
 {
+	[TestFixture]
     public class HomeModuleTests
     {
-        [Fact]
+        [Test]
         public void Should_return_status_ok_when_route_exists()
         {
             // Given
@@ -19,13 +16,18 @@ namespace Testing.Tests
             var browser = new Browser(bootstrapper, defaults: to => to.Accept("application/json"));
 
             // When
-            var result = browser.Get("/", with => { with.HttpRequest(); });
+            var result = browser.Get("/", with => with.HttpRequest());
 
             // Then
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
-        [Fact]
+
+
+
+
+
+		[Test]
         public void Should_redirect_to_login_with_error_details_incorrect()
         {
             // Given
@@ -45,7 +47,11 @@ namespace Testing.Tests
         }
 
 
-        [Fact]
+
+
+
+
+		[Test]
         public void Should_display_error_message_when_error_passed()
         {
             // Given

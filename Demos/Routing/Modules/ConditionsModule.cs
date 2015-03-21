@@ -1,8 +1,4 @@
 ﻿using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Routing.Modules
 {
@@ -12,15 +8,11 @@ namespace Routing.Modules
         {
             // Conditions must be of the form Func<NancyContext, bool> !
 
-            Post["/login", (ctx) => ctx.Request.Form.remember] = _ =>
-            {
-                return "Handling code when remember is true!";
-            };
+            Post["/login", (ctx) => ctx.Request.Form.remember] = _ => 
+				"Handling code when remember is true!";
 
             Post["/login", (ctx) => !ctx.Request.Form.remember] = _ =>
-            {
-                return "Handling code when remember is false!";
-            };
+				"Handling code when remember is false!";
         }
     }
 }

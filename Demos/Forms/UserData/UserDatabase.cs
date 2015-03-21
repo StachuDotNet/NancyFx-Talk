@@ -4,39 +4,35 @@ using Nancy.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Forms.UserData
 {
     public class UserDatabase : IUserMapper
     {
-        private static List<Tuple<string, string, Guid>> users = new List<Tuple<string, string, Guid>>();
+        private static readonly List<Tuple<string, string, Guid>> Users = new List<Tuple<string, string, Guid>>();
 
         static UserDatabase()
         {
-            users.Add(new Tuple<string, string, Guid>("admin", "password", new Guid("55E1E49E-B7E8-4EEA-8459-7A906AC4D4C0")));
-            users.Add(new Tuple<string, string, Guid>("user", "password", new Guid("56E1E49E-B7E8-4EEA-8459-7A906AC4D4C0")));
+            Users.Add(new Tuple<string, string, Guid>("admin", "password", new Guid("55E1E49E-B7E8-4EEA-8459-7A906AC4D4C0")));
+            Users.Add(new Tuple<string, string, Guid>("user", "password", new Guid("56E1E49E-B7E8-4EEA-8459-7A906AC4D4C0")));
         }
 
         public IUserIdentity GetUserFromIdentifier(Guid identifier, NancyContext context)
         {
-            var userRecord = users.Where(u => u.Item3 == identifier).FirstOrDefault();
+            var userRecord = Users.FirstOrDefault(u => u.Item3 == identifier);
 
             return userRecord == null
-                       ? null
-                       : new DemoUserIdentity { UserName = userRecord.Item1 };
+                ? null
+                : new DemoUserIdentity { UserName = userRecord.Item1 };
         }
 
         public static Guid? ValidateUser(string username, string password)
         {
-            var userRecord = users.Where(u => u.Item1 == username && u.Item2 == password).FirstOrDefault();
+	        var userRecord = Users.FirstOrDefault(u => u.Item1 == username && u.Item2 == password);
 
-            if (userRecord == null)
-            {
-                return null;
-            }
-
-            return userRecord.Item3;
+	        return userRecord == null 
+				? (Guid?) null 
+				: userRecord.Item3;
         }
     }
 }

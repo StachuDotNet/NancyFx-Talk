@@ -1,32 +1,21 @@
 ﻿using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Caching.CachingExtensions
 {
     public static class ContextExtensions
     {
-        public const string OUTPUT_CACHE_TIME_KEY = "OUTPUT_CACHE_TIME";
+        public const string OutputCacheTimeKey = "OUTPUT_CACHE_TIME";
 
-        /// <summary>
-        /// Enable output caching for this route
-        /// </summary>
-        /// <param name="context">Current context</param>
-        /// <param name="seconds">Seconds to cache for</param>
+        /// <summary>Enable output caching for this route</summary>
         public static void EnableOutputCache(this NancyContext context, int seconds)
         {
-            context.Items[OUTPUT_CACHE_TIME_KEY] = seconds;
+            context.Items[OutputCacheTimeKey] = seconds;
         }
 
-        /// <summary>
-        /// Disable the output cache for this route
-        /// </summary>
-        /// <param name="context">Current context</param>
+        /// <summary>Disable the output cache for this route</summary>
         public static void DisableOutputCache(this NancyContext context)
         {
-            context.Items.Remove(OUTPUT_CACHE_TIME_KEY);
+            context.Items.Remove(OutputCacheTimeKey);
         }
     }
 }

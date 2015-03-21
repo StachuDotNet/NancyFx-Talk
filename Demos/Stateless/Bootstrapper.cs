@@ -3,10 +3,6 @@ using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using Stateless.UserData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Stateless
 {

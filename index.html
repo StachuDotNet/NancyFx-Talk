@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>NancyFX for a Simpler Web</title>
+
+		<meta name="description" content="NancyFX for a Simpler Web">
+		<meta name="author" content="Stachu Korick">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/serif.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		You don't deserve a shiv.
+		<![endif]-->
+
+		<style>
+		#split-book img {
+			margin: 0;
+		}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+		            <h2>NancyFx for a Simpler Web</h2>
+		            <h3>Stachu Korick</h3>
+		        </section>
+        
+		        <section>
+		            <section>
+			            <h2>80 Minutes? I'll try.</h2>
+					</section>
+
+					<section id="split-book">
+						<img class="fragment" src="http://i.imgur.com/I6WQLX3.jpg?1" alt="">
+						<img class="fragment" src="http://i.imgur.com/BiuoLPJ.jpg?1" alt="">
+						<img class="fragment" src="http://i.imgur.com/kA9PRck.jpg?1" alt="">
+						<img class="fragment" src="http://i.imgur.com/63Jazau.jpg?1" alt="">
+						<img class="fragment" src="http://i.imgur.com/7Vu1dnb.jpg?1" alt="">
+					</section>
+
+		        </section>
+        
+		        <section>
+		            <h2>Who am I?</h2>
+		            <ul>
+		                <li>Not an MVP</li>
+		                <li class="fragment">Haven't written any books</li>
+		                <li class="fragment">Don't contribute to any OSS projects you care about</li>
+		                <li class="fragment">Growing software developer working at AcademyOne</li>
+		                <li class="fragment">I solve Rubik's Cubes a lot, and write software in that space, using 'weird' tech, like
+		                    <ul>
+		                        <li>F#</li>
+		                        <li>NancyFx</li>
+		                        <li>SignalR</li>
+		                        <li>Neo4j</li>
+		                        <li>DDD, CQRS, Event-Sourcing</li>
+		                    </ul>
+		                </li>
+		            </ul>
+		        </section>
+        
+		        <section>
+		            <h3>Brief Overview of NancyFx</h3>
+		            <ul>
+		                <li>Open-Source</li>
+		                <li>Based off of Ruby's Sinatra</li>
+		                <li>Lightweight and low-ceremony</li>
+		                <li>Works on .NET and Mono</li>
+		                <li>Has sensible defaults, but lets you easily override</li>
+		            </ul>
+		        </section>
+        
+		        <section>
+		            <h2>How the Internet Works</h2>
+		            <h4>(the responsibilities of a web framework)</h4>
+		            <ul>
+		                <li>Client sends request</li>
+		                <li>Server picks up request</li>
+		                <li>Server handles request</li>
+		                <li>Server prepares response</li>
+		                <li>Server sends back response</li>
+		                <li>Client deals with response</li>
+		                <li>... Repeat!</li>
+		            </ul>
+		        </section>
+		        
+		        <section>
+		            <h2>Available Hosts</h2>
+		            <ul>
+		                <li>ASP.NET (IIS)</li>
+		                <li>WCF</li>
+		                <li>OWIN</li>
+		                <li>Self-Hosting</li>
+		                <li>Anything (even mono on a raspberry pi)</li>
+		            </ul>
+		        </section>
+		        
+		        <section>
+		            <h2>Super-Duper-Happy-Path</h2>
+		            <ul>
+		                <li>It just works</li>
+		                <li>Easily-customizable</li>
+		                <li>Low-ceremony</li>
+		                <li>Low-friction</li>
+		            </ul>
+		        </section>
+        
+		        <section>
+		            <h2>Modules:</h2>
+		            <h2>The Endpoints of NancyFx</h2>
+
+						<pre><code data-trim contenteditable>
+public class ResourceModule : NancyModule
+{
+    public ResourceModule() : base("/products")
+    {
+        Get["/list"] = parameters => {
+            return "The list of products";
+        };
+    }
+}</code></pre>
+
+		        	<p>"Get me to the code!"</p>
+		    	</section>
+    
+			    <section>
+			        <h2>Why use NancyFx?</h2>
+			        <ul>
+			            <li>Terse syntax; less ceremony</li>
+			            <li>Better extension points</li>
+			            <li>Easier testing</li>
+			            <li>Automatic dependency-injection</li>
+			            <li>Completely customizable</li>
+			            <li>Runs anywhere (even in an .exe!)</li>
+			            <li>No web.config nonsense</li>
+			            <li>Support and community</li>
+			        </ul>
+			    </section>
+    
+    <section>
+        <section>
+            <h2>An Explanation of Routing</h2>
+        </section>
+        
+        <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+            <h3>METHOD+PATTERN+(CONDITION)+ACTION</h3>
+            <p><img src="http://i.imgur.com/lKS8zji.png?1" alt="" /></p>
+        </section>
+        
+        <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+            <h2>Methods available</h2>
+            <ul>
+                <li>GET</li>
+                <li>POST</li>
+                <li>PATCH</li>
+                <li>PUT</li>
+                <li>DELETE</li>
+                <li>OPTIONS</li>
+                <li>HEAD</li>
+            </ul>
+        </section>
+        
+        <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+            <h2>Patterns</h2>
+            <ul>
+                <li>Literal strings "/my/route"</li>
+                <li>Captures "/my/{route}"</li>
+                <li>Route Constraints "/my/{route:alpha}"</li>
+            </ul>
+            <h4>Note! Different patterns have different weight</h4>
+            <p>(kind of like CSS selectors)</p>
+        </section>
+        
+        <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+            <h3>Actions</h3>
+<pre><code data-trim contenteditable>
+Func&lt;dynamic,dynamic&gt;
+</code></pre>
+
+            <p>Will determine response type automatically, or you can use the Response object to manually negotiate content</p>
+        </section>
+        
+    </section>
+    
+    <section>
+        <section>
+            <h2>Model-Binding</h2>
+        </section>
+        
+        <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+            <h3>The model-binder will pick up on</h3>
+            <ul>
+                <li>Query strings</li>
+                <li>Captured parameters</li>
+                <li>Body of request</li>
+            </ul>
+        </section>
+        
+        <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+            <h3>Available Syntaxes</h3>
+<pre><code data-trim contenteditable>
+Foo f = this.Bind();
+var f = this.Bind&lt;Foo&gt;();
+var f = this.BindTo(instance);
+</code></pre>
+    </section>
+    
+    <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+        <h3>How Does Nancy Figure Out What Data I'm Passing In?</h3>
+        <p>Nancy will look at your HTTP Content-Type header.</p>
+        <p>i.e. - application/json will result in being interpreted as JSON</p>
+    </section>
+    
+</section>
+
+<section>
+    <section>
+        <h2>The Bootstrapper</h2>
+    </section>
+    
+    <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+        <h3>What is the Bootstrapper</h3>
+        <ul>
+            <li>The bootstrapper is Nancy's way of letting you change the runtime behaviour of NancyFx</li>
+            <li>Basically a global.asax and web.config combo that isn't as bad as either</li>
+        </ul>
+    </section>
+    
+    <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+        <h3>Take me to the code!</h3>
+        <p>Ok.</p>
+    </section>
+    
+    <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+        <h3>What if my Bootstrapper's too long?</h3>
+        <p>IApplicationStartup and IRegistrations to the rescue!</p>
+        
+<pre><code data-trim contenteditable>
+public class ApplicationStartup : IApplicationStartup
+{
+	public void Initialize(IPipelines pipelines)  {/*...*/)}
+}</code></pre>
+
+<pre><code data-trim contenteditable>
+public class Registrations : IRegistrations
+{
+	public IEnumerable&lt;CollectionTypeRegistration&gt; 
+		CollectionTypeRegistrations { get { /*...*/ } }
+
+	public IEnumerable&lt;InstanceRegistration&gt; 
+		InstanceRegistrations { get { /*...*/ } }
+
+	public IEnumerable&lt;TypeRegistration&gt; 
+		TypeRegistrations { get { /*...*/ } }
+}</code></pre>
+
+    </section>
+    
+</section>
+
+<section>
+    <section>
+        <h2>Hooks?!</h2>
+        <p>To the code!</p>
+    </section>
+    
+    <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+        <h3>What are Hooks good for?</h3>
+        <ul>
+            <li>Caching</li>
+            <li>Security</li>
+            <li>Rewriting requests/responses</li>
+            <li>Dealing with runtime errors</li>
+        </ul>
+    </section>
+    
+</section>
+
+<section>
+    <section>
+        <h2>How do I Async?</h2>
+    </section>
+    
+    <section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+        <h3>Route-Level</h3>
+
+<pre><code data-trim contenteditable>
+Get["/", true] = async (x, ct) =>
+{
+    await Task.Delay(1000);
+    return "done";
+};
+</code></pre>
+
+</section>
+
+<section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+    <h2>Hook-Level</h2>
+
+<pre><code data-trim contenteditable>
+Before += async (ctx, ct) =>
+{
+    await Task.Delay(5000);
+    return null;
+};
+</code></pre>
+
+</section>
+
+</section>
+
+<section>
+<section>
+<h2>Views and ViewEngines</h2>
+</section>
+
+<section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+<h3>Supported ViewEngines</h3>
+<ul>
+    <li>Raw HTML</li>
+    <li>SuperSimpleViewEngine</li>
+    <li>Razor</li>
+    <li>Spark</li>
+    <li>NHaml</li>
+    <li>NDjango</li>
+    <li>dotLiquid</li>
+    <li>Parrot</li>
+    <li>etc.</li>
+</ul>
+</section>
+
+<section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+<h3>Syntax for Returning a View</h3>
+
+<p>Without a model</p>
+<pre><code data-trim contenteditable>
+return View["viewName"];
+</code></pre>
+
+<p>With a model</p>
+<pre><code data-trim contenteditable>
+return View["viewName", model];
+</code></pre>
+
+</section>
+
+</section>
+
+<section>
+<section>
+<h2>NancyFx is Highly-Testable</h2>
+</section>
+
+<section author="Stachu Korick" description="NancyFx for a Simpler Web" theme="serif" title="NancyFx" transition="default">
+<p>For more, <a target="_blank" href="http://www.marcusoft.net/2013/01/NancyTesting1.html">go here</a></p>
+</section>
+
+</section>
+
+<section>
+<h1>Done!</h1>
+<p>Time for odds and ends!</p>
+</section>
+
+<section>
+<h3>What IOC containers can I use?</h3>
+<p>Currently available:</p>
+<ul>
+<li>Windsor</li>
+<li>Unity</li>
+<li>StructureMap</li>
+<li>Ninject</li>
+<li>AutoFac</li>
+<li>TinyIOC</li>
+</ul>
+</section>
+
+<section>
+<h2>Content-Negotiation</h2>
+<pre><code data-trim contenteditable>
+Get["/"] = parameters => {
+    return Negotiate
+        .WithModel(new RatPack {FirstName = "Nancy "})
+        .WithMediaRangeModel("text/html", 
+            new RatPack {FirstName = "Nancy fancy pants"})
+        .WithView("negotiatedview")
+        .WithHeader("X-Custom", "SomeValue");
+};
+</code></pre>
+</section>
+
+<section>
+	<h3>What do you want to see?</h3>
+	<p>NancyFx &amp;</p>
+	<ul>
+		<li>F#</li>
+		<li>Caching</li>
+		<li>Authentication
+			<ul>
+				<li>Basic</li>
+				<li>Forms</li>
+				<li>Stateless</li>
+			</ul>
+		</li>
+		<li>Localization</li>
+	</ul>
+	<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+</section>
+
+
+
+
+		
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p>
+							<span class="fragment">... a</span>
+							<span class="fragment">fragmented</span>
+							<span class="fragment">slide.</span>
+						</p>
+
+						
+					</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+		
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/zoom.js', async: true },
+					{ src: 'js/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+
+
+	</body>
+</html>

@@ -1,9 +1,5 @@
 ﻿using Nancy;
 using Nancy.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Basic.Modules
 {
@@ -14,10 +10,7 @@ namespace Basic.Modules
         {
             this.RequiresAuthentication();
 
-            Get["/"] = x =>
-            {
-                return "Hello " + this.Context.CurrentUser.UserName;
-            };
+            Get["/"] = x => "You're secure! Your name is: " + Context.CurrentUser.UserName;
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Nancy.Security;
-using System.Web;
 using Forms.UserData;
 
 namespace Forms.Modules
@@ -17,7 +13,7 @@ namespace Forms.Modules
 
             Get["/"] = x =>
             {
-                var model = new UserModel(this.Context.CurrentUser.UserName);
+                var model = new UserModel(Context.CurrentUser.UserName);
                 return View["secure.cshtml", model];
             };
         }

@@ -1,8 +1,4 @@
 ﻿using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 using Nancy.ModelBinding;
 
@@ -33,10 +29,8 @@ namespace Routing.Modules
             };
 
             // Manual content negotiation.
-            Get["/"] = _ =>
+            Get["/actions/negotiation"] = _ =>
             {
-
-
                 return Negotiate
                     .WithModel(new { FirstName = "Nancy " })
                     .WithMediaRangeModel("text/html", new { FirstName = "Nancy fancy pants" })

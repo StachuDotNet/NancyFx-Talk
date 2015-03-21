@@ -1,8 +1,4 @@
 ﻿using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Nancy.Security;
 using Forms.UserData;
 
@@ -19,7 +15,7 @@ namespace Forms.Modules
             {
                 this.RequiresAuthentication();
 
-                var model = new UserModel(this.Context.CurrentUser.UserName);
+                var model = new UserModel(Context.CurrentUser.UserName);
                 return View["secure.cshtml", model];
             };
         }
